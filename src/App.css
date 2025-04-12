@@ -87,34 +87,51 @@ h1 {
   overflow-x: auto;
   background-color: #121339;
   border-radius: 10px;
-  padding: 10px;
+  padding: 0;
   min-height: 300px;
   max-height: 400px;
   animation: fadeIn 1.2s ease-in-out;
   margin-bottom: 20px;
+  position: relative;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
 }
 
 thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: #121339;
-  box-shadow: 0 1px 0 #2d2d5b;
 }
 
-th, td {
+th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 500;
+  color: #9ca3af;
+  background-color: #121339;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 0 #2d2d5b;
+}
+
+tbody {
+  background-color: #121339;
+}
+
+td {
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #2d2d5b;
 }
 
-th {
-  font-weight: 500;
-  color: #9ca3af;
-  background-color: #121339;
+/* Remove extra padding for first row */
+tbody tr:first-child td {
+  padding-top: 16px;
 }
 
 tr {
