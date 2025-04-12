@@ -631,13 +631,19 @@ tr:nth-child(10) { animation-delay: 0.5s; }
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+}
+
+.footer span {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
 }
 
 .contact-icon {
   color: white;
   cursor: pointer;
-  padding: 10px;
+  padding: 6px;
   border-radius: 50%;
   background-color: rgba(139, 92, 246, 0.3);
   display: flex;
@@ -645,6 +651,8 @@ tr:nth-child(10) { animation-delay: 0.5s; }
   align-items: center;
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
   transition: all 0.3s ease;
+  height: 32px;
+  width: 32px;
 }
 
 .contact-icon:hover {
