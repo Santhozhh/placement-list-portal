@@ -237,9 +237,9 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
           <thead>
             <tr>
               <th>SI. NO</th>
-              <th>NAME</th>
-              <th>ROLL NO</th>
               <th>REGNO</th>
+              <th>ROLL NO</th>
+              <th>NAME</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -259,9 +259,9 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                   }}
                 >
                   <td>{student["SI. NO"]}</td>
-                  <td>{student.NAME}</td>
-                  <td>{student["ROLL NO"]}</td>
                   <td>{student.REGNO}</td>
+                  <td>{student["ROLL NO"]}</td>
+                  <td>{student.NAME}</td>
                   <td>
                     <div className="status-buttons">
                       <motion.button 
