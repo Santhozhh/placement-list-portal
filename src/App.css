@@ -612,4 +612,53 @@ tr:nth-child(10) { animation-delay: 0.5s; }
   .toast-message {
     font-size: 12px;
   }
+  
+  .footer {
+    flex-direction: column;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 15px 0;
+  color: white;
+  font-size: 25px;
+  animation: fadeIn 0.8s ease-in-out;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 20px rgba(139, 92, 246, 0.4);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-icon {
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(139, 92, 246, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  background-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+}
+
+.footer a {
+  color: #8b5cf6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #7c3aed;
+  text-decoration: underline;
 }

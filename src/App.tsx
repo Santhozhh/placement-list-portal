@@ -237,9 +237,9 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
           <thead>
             <tr>
               <th>SI. NO</th>
-              <th>REGNO</th>
-              <th>ROLL NO</th>
               <th>NAME</th>
+              <th>ROLL NO</th>
+              <th>REGNO</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -259,9 +259,9 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                   }}
                 >
                   <td>{student["SI. NO"]}</td>
-                  <td>{student.REGNO}</td>
-                  <td>{student["ROLL NO"]}</td>
                   <td>{student.NAME}</td>
+                  <td>{student["ROLL NO"]}</td>
+                  <td>{student.REGNO}</td>
                   <td>
                     <div className="status-buttons">
                       <motion.button 
@@ -418,6 +418,28 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
         >
           Download Excel
         </motion.button>
+      </motion.div>
+      
+      <motion.div 
+        className="footer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 2.2 }}
+      >
+        <span>Developed by Santhosh</span>
+        <motion.div 
+          className="contact-icon"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, delay: 2.5 }}
+          whileHover={{ scale: 1.2, rotate: 5 }}
+          onClick={() => window.location.href = "mailto:ksdsanthosh130@gmail.com?subject=Placement%20Tracker%20Inquiry&body="}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </motion.div>
       </motion.div>
     </div>
   )
