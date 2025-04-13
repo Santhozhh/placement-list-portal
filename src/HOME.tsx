@@ -47,8 +47,6 @@ function HOME() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStudents, setSelectedStudents] = useState<Record<string, 'willing' | 'not-willing' | null>>({})
   const [copiedToClipboard, setCopiedToClipboard] = useState(false)
-  const summaryRef = useRef<HTMLDivElement>(null)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [toast, setToast] = useState<{ show: boolean; student: string; status: 'willing' | 'not-willing' } | null>(null)
   
   // Format current date
