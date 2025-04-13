@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import studentData from './III-c_list.json'
 import * as XLSX from 'xlsx'
+import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa'
 
 const countAnimation = {
   hidden: { scale: 0, opacity: 0 },
@@ -330,23 +331,23 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                     <td>{student.NAME}</td>
                     <td>
                       <div className="status-buttons">
-                        <motion.button 
+                        <motion.button
                           className={`willing-btn ${selectedStudents[student.REGNO] === 'willing' ? 'active' : ''}`}
                           onClick={() => handleSelection(student.REGNO, 'willing', student.NAME)}
-                          whileTap={{ scale: 0.95 }}
+                          type="button"
                           whileHover={selectedStudents[student.REGNO] !== 'willing' ? { y: -3, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" } : {}}
                           animate={selectedStudents[student.REGNO] === 'willing' ? { boxShadow: "0 0 15px rgba(16, 185, 129, 0.7)" } : {}}
                         >
-                          Willing
+                          <FaThumbsUp style={{ marginRight: '8px' }} /> Willing
                         </motion.button>
-                        <motion.button 
+                        <motion.button
                           className={`not-willing-btn ${selectedStudents[student.REGNO] === 'not-willing' ? 'active' : ''}`}
                           onClick={() => handleSelection(student.REGNO, 'not-willing', student.NAME)}
-                          whileTap={{ scale: 0.95 }}
+                          type="button"
                           whileHover={selectedStudents[student.REGNO] !== 'not-willing' ? { y: -3, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" } : {}}
                           animate={selectedStudents[student.REGNO] === 'not-willing' ? { boxShadow: "0 0 15px rgba(234, 88, 12, 0.7)" } : {}}
                         >
-                          Not Willing
+                          <FaThumbsDown style={{ marginRight: '8px' }} /> Not Willing
                         </motion.button>
                       </div>
                     </td>
