@@ -4,7 +4,7 @@ import './App.css'
 import studentData from './III-c_list.json'
 import * as XLSX from 'xlsx'
 
-function App() {
+function HOME() {
   const [students, _setStudents] = useState(studentData)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStudents, setSelectedStudents] = useState<Record<string, 'willing' | 'not-willing' | null>>({})
@@ -445,4 +445,4 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
   )
 }
 
-export default App
+export default HOME
