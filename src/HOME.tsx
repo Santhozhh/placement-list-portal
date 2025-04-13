@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect,  } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import studentData from './III-c_list.json'
