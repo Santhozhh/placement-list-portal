@@ -4,53 +4,13 @@ import './App.css'
 import studentData from './III-c_list.json'
 import * as XLSX from 'xlsx'
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa'
-
-const countAnimation = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: { 
-    scale: 1, 
-    opacity: 1,
-    transition: { 
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-      duration: 0.8 
-    }
-  }
-};
-
-const cardAnimation = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { 
-    y: 0, 
-    opacity: 1,
-    transition: { 
-      type: "spring",
-      stiffness: 100,
-      damping: 15 
-    }
-  }
-};
-
-const listAnimation = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { 
-      duration: 0.5 
-    }
-  }
-};
-
 function HOME() {
   const [students, _setStudents] = useState(studentData)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStudents, setSelectedStudents] = useState<Record<string, 'willing' | 'not-willing' | null>>({})
-  const [copiedToClipboard, setCopiedToClipboard] = useState(false)
+  const [ ,setCopiedToClipboard] = useState(false)
   const [toast, setToast] = useState<{ show: boolean; student: string; status: 'willing' | 'not-willing' } | null>(null)
   
-  // Format current date
   const currentDate = new Date()
   const formattedDate = currentDate.toLocaleDateString('en-GB', {
     day: '2-digit',
