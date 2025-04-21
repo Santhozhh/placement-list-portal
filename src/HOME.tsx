@@ -363,53 +363,131 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          style={{
+            background: 'rgba(13, 17, 23, 0.7)',
+            padding: '1.5rem',
+            borderRadius: '16px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(48, 54, 61, 0.5)'
+          }}
         >
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}
-          >
-            Summary Report ({formattedDate})
-          </motion.h2>
-          
-          <div className="summary-counts" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-            <motion.div 
-              className="count-card willing"
-              variants={cardAnimation}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.7 }}
-              style={{ 
-                padding: '0.75rem',
-                minWidth: '120px',
-                textAlign: 'center',
-                borderRadius: '8px',
-                background: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.2)'
-              }}
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            marginBottom: '1.5rem',
+            position: 'relative'
+          }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>Selected</h3>
-              <div className="count" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{willingCount}</div>
+              <h2 style={{ 
+                fontSize: '1.25rem',
+                margin: 0,
+                color: '#fff',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={downloadExcel}>
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                
+                <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  onClick={copySummaryToClipboard}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+
+                Summary Report
+              </h2>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                style={{
+                  color: 'rgba(255, 255, 255, 0.5)',
+                  fontSize: '0.8rem',
+                  display: 'block',
+                  marginTop: '0.25rem'
+                }}
+              >
+                {formattedDate}
+              </motion.span>
             </motion.div>
             
-            <motion.div 
-              className="count-card not-willing"
-              variants={cardAnimation}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.8 }}
-              style={{ 
-                padding: '0.75rem',
-                minWidth: '120px',
-                textAlign: 'center',
-                borderRadius: '8px',
-                background: 'rgba(239, 68, 68, 0.1)',
-                border: '1px solid rgba(239, 68, 68, 0.2)'
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              style={{
+                display: 'flex',
+                gap: '1rem'
               }}
             >
-              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>Not Selected</h3>
-              <div className="count" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{notWillingCount}</div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ 
+                  fontSize: '1.5rem', 
+                  fontWeight: 'bold',
+                  color: '#10b981',
+                  lineHeight: 1
+                }}>{willingCount}</div>
+                <div style={{ 
+                  fontSize: '0.75rem',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  marginTop: '0.25rem'
+                }}>Selected</div>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  background: 'rgba(147, 51, 234, 0.1)',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(147, 51, 234, 0.2)',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ 
+                  fontSize: '1.5rem', 
+                  fontWeight: 'bold',
+                  color: '#9333EA',
+                  lineHeight: 1
+                }}>{notWillingCount}</div>
+                <div style={{ 
+                  fontSize: '0.75rem',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  marginTop: '0.25rem'
+                }}>Not Selected</div>
+              </motion.div>
             </motion.div>
           </div>
           
@@ -418,65 +496,170 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
-            style={{ display: 'flex', gap: '2rem' }}
+            style={{ 
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '1rem',
+              maxHeight: '300px',
+              overflow: 'hidden'
+            }}
           >
-            <div className="summary-list" style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'rgba(16, 185, 129, 0.9)' }}>Selected List</h3>
+            <motion.div 
+              className="summary-list"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 1.3 }}
+              style={{ 
+                background: 'rgba(13, 17, 23, 0.9)',
+                borderRadius: '12px',
+                padding: '1rem',
+                height: '100%',
+                overflow: 'hidden',
+                border: '1px solid rgba(16, 185, 129, 0.3)'
+              }}
+            >
+              <h3 style={{ 
+                fontSize: '0.9rem', 
+                marginBottom: '1rem', 
+                color: '#10b981',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Selected List
+              </h3>
               <div className="name-list" style={{ 
-                maxHeight: '200px',
+                height: 'calc(100% - 2rem)',
                 overflowY: 'auto',
-                fontSize: '0.85rem',
-                padding: '0.5rem',
-                background: 'rgba(16, 185, 129, 0.05)',
-                borderRadius: '6px'
+                fontSize: '0.9rem'
               }}>
                 {willingStudents.map((student, index) => (
                   <motion.div 
                     key={student.REGNO}
                     className="name-item"
-                    variants={listAnimation}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.3 + index * 0.05 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 1.4 + index * 0.05 }}
                     style={{
-                      padding: '0.25rem 0.5rem',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)'
+                      padding: '0.75rem',
+                      marginBottom: '0.5rem',
+                      background: 'rgba(16, 185, 129, 0.08)',
+                      borderRadius: '8px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      border: '1px solid rgba(16, 185, 129, 0.15)'
+                    }}
+                    whileHover={{ 
+                      background: 'rgba(16, 185, 129, 0.12)',
+                      transform: 'translateX(5px)'
                     }}
                   >
-                    {student["ROLL NO"]} - {student.NAME}
+                    <span style={{ 
+                      color: '#fff',
+                      fontWeight: 500
+                    }}>{student["ROLL NO"]}</span>
+                    <span style={{ 
+                      fontWeight: 500,
+                      color: '#10b981',
+                      maxWidth: '60%',
+                      textAlign: 'right',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap'
+                    }}>{student.NAME}</span>
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
             
-            <div className="summary-list" style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'rgba(239, 68, 68, 0.9)' }}>Not Selected List</h3>
+            <motion.div 
+              className="summary-list"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 1.3 }}
+              style={{ 
+                background: 'rgba(13, 17, 23, 0.9)',
+                borderRadius: '12px',
+                padding: '1rem',
+                height: '100%',
+                overflow: 'hidden',
+                border: '1px solid rgba(147, 51, 234, 0.3)'
+              }}
+            >
+              <h3 style={{ 
+                fontSize: '0.9rem', 
+                marginBottom: '1rem', 
+                color: '#9333EA',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                Not Selected List
+              </h3>
               <div className="name-list" style={{ 
-                maxHeight: '200px',
+                height: 'calc(100% - 2rem)',
                 overflowY: 'auto',
-                fontSize: '0.85rem',
-                padding: '0.5rem',
-                background: 'rgba(239, 68, 68, 0.05)',
-                borderRadius: '6px'
+                fontSize: '0.9rem'
               }}>
                 {notWillingStudents.map((student, index) => (
                   <motion.div 
                     key={student.REGNO}
                     className="name-item"
-                    variants={listAnimation}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.3 + index * 0.05 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 1.4 + index * 0.05 }}
                     style={{
-                      padding: '0.25rem 0.5rem',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)'
+                      padding: '0.75rem',
+                      marginBottom: '0.5rem',
+                      background: 'rgba(147, 51, 234, 0.08)',
+                      borderRadius: '8px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      border: '1px solid rgba(147, 51, 234, 0.15)'
+                    }}
+                    whileHover={{ 
+                      background: 'rgba(147, 51, 234, 0.12)',
+                      transform: 'translateX(5px)'
                     }}
                   >
-                    {student["ROLL NO"]} - {student.NAME}
+                    <span style={{ 
+                      color: '#fff',
+                      fontWeight: 500
+                    }}>{student["ROLL NO"]}</span>
+                    <span style={{ 
+                      fontWeight: 500,
+                      color: '#9333EA',
+                      maxWidth: '60%',
+                      textAlign: 'right',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap'
+                    }}>{student.NAME}</span>
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
         
@@ -486,23 +669,8 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 2 }}
         >
-          <motion.button 
-            className="copy-btn" 
-            onClick={copySummaryToClipboard}
-            whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            animate={copiedToClipboard ? { scale: [1, 1.1, 1] } : {}}
-          >
-            {copiedToClipboard ? 'Copied!' : 'Copy Summary'}
-          </motion.button>
-          <motion.button 
-            className="download-btn" 
-            onClick={downloadExcel}
-            whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download Excel
-          </motion.button>
+          
+          
         </motion.div>
         
         <motion.div 
