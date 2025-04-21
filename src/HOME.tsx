@@ -78,7 +78,7 @@ function HOME() {
   useEffect(() => {
     const initialWillingness: Record<string, 'willing' | 'not-willing' | null> = {}
     students.forEach(student => {
-      initialWillingness[student.REGNO] = 'willing'
+      initialWillingness[student.REGNO] = 'not-willing'
     })
     setSelectedStudents(initialWillingness)
   }, [students])
