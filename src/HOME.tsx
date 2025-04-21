@@ -112,7 +112,7 @@ function HOME() {
   const resetAllToWilling = () => {
     const resetWillingness: Record<string, 'willing' | 'not-willing' | null> = {}
     students.forEach(student => {
-      resetWillingness[student.REGNO] = 'willing'
+      resetWillingness[student.REGNO] = 'not-willing'
     })
     setSelectedStudents(resetWillingness)
     
@@ -273,7 +273,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
               <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
               <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
             </svg>
-            Reset All to Selected
+            Reset All as Not-Selected
           </motion.button>
         </motion.div>
         
