@@ -143,13 +143,13 @@ PLACEMENT WILLINGNESS SUMMARY
 
 ${formattedDate}
 
-Willing Count: ${willingCount}
-Not Willing Count: ${notWillingCount}
+Selected Count: ${willingCount}
+Not Selected  Count: ${notWillingCount}
 
-WILLING STUDENTS:
+SELECTED  STUDENTS:
 ${willingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${student["ROLL NO"]})`).join('\n')}
 
-NOT WILLING STUDENTS:
+NOT SELECTED STUDENTS STUDENTS:
 ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${student["ROLL NO"]})`).join('\n')}
     `.trim()
 
@@ -165,7 +165,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
       "REGNO": student.REGNO,
       "ROLL NO": student["ROLL NO"],
       "NAME": student.NAME,
-      "STATUS": selectedStudents[student.REGNO] === 'willing' ? 'Willing' : 'Not Willing'
+      "STATUS": selectedStudents[student.REGNO] === 'willing' ? 'SELECTED' : 'NOT SELECTED'
     }))
 
     // Create worksheet
@@ -245,7 +245,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Placement Willing List
+          III-C SELECTED LIST 
         </motion.h1>
         
         <motion.p 
@@ -273,7 +273,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
               <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
               <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
             </svg>
-            Reset All to Willing
+            Reset All to Selected
           </motion.button>
         </motion.div>
         
@@ -338,7 +338,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                           whileHover={selectedStudents[student.REGNO] !== 'willing' ? { y: -3, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" } : {}}
                           animate={selectedStudents[student.REGNO] === 'willing' ? { boxShadow: "0 0 15px rgba(16, 185, 129, 0.7)" } : {}}
                         >
-                          <FaThumbsUp style={{ marginRight: '8px' }} /> Willing
+                          <FaThumbsUp style={{ marginRight: '8px' }} /> selected
                         </motion.button>
                         <motion.button
                           className={`not-willing-btn ${selectedStudents[student.REGNO] === 'not-willing' ? 'active' : ''}`}
@@ -347,7 +347,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                           whileHover={selectedStudents[student.REGNO] !== 'not-willing' ? { y: -3, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" } : {}}
                           animate={selectedStudents[student.REGNO] === 'not-willing' ? { boxShadow: "0 0 15px rgba(234, 88, 12, 0.7)" } : {}}
                         >
-                          <FaThumbsDown style={{ marginRight: '8px' }} /> Not Willing
+                          <FaThumbsDown style={{ marginRight: '8px' }} /> Not Selected 
                         </motion.button>
                       </div>
                     </td>
@@ -394,7 +394,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                 boxShadow: "0 20px 30px rgba(0,0,0,0.2)"
               }}
             >
-              <h3>Willing</h3>
+              <h3>Selected</h3>
               <motion.div 
                 className="count"
                 variants={countAnimation}
@@ -418,7 +418,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                 boxShadow: "0 20px 30px rgba(0,0,0,0.2)"
               }}
             >
-              <h3>Not Willing</h3>
+              <h3>Not Selected</h3>
               <motion.div 
                 className="count"
                 variants={countAnimation}
@@ -438,7 +438,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
             transition={{ duration: 0.5, delay: 1.2 }}
           >
             <div className="summary-list">
-              <h3>Willing Students</h3>
+              <h3>Selected Students</h3>
               <div className="name-list">
                 {willingStudents.map((student, index) => (
                   <motion.div 
@@ -461,7 +461,7 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
             </div>
             
             <div className="summary-list">
-              <h3>Not Willing Students</h3>
+              <h3>Not Selected Students</h3>
               <div className="name-list">
                 {notWillingStudents.map((student, index) => (
                   <motion.div 
