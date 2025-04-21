@@ -368,42 +368,29 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}
           >
-            Placement Willingness Summary
+            Summary Report ({formattedDate})
           </motion.h2>
           
-          <motion.div
-            className="summary-date"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            {formattedDate}
-          </motion.div>
-          
-          <div className="summary-counts">
+          <div className="summary-counts" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
             <motion.div 
               className="count-card willing"
               variants={cardAnimation}
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.7 }}
-              whileHover={{ 
-                scale: 1.05,
-                rotateX: 10,
-                boxShadow: "0 20px 30px rgba(0,0,0,0.2)"
+              style={{ 
+                padding: '0.75rem',
+                minWidth: '120px',
+                textAlign: 'center',
+                borderRadius: '8px',
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.2)'
               }}
             >
-              <h3>Selected</h3>
-              <motion.div 
-                className="count"
-                variants={countAnimation}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 1 }}
-              >
-                {willingCount}
-              </motion.div>
+              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>Selected</h3>
+              <div className="count" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{willingCount}</div>
             </motion.div>
             
             <motion.div 
@@ -412,22 +399,17 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.8 }}
-              whileHover={{ 
-                scale: 1.05,
-                rotateX: 10,
-                boxShadow: "0 20px 30px rgba(0,0,0,0.2)"
+              style={{ 
+                padding: '0.75rem',
+                minWidth: '120px',
+                textAlign: 'center',
+                borderRadius: '8px',
+                background: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid rgba(239, 68, 68, 0.2)'
               }}
             >
-              <h3>Not Selected</h3>
-              <motion.div 
-                className="count"
-                variants={countAnimation}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 1.1 }}
-              >
-                {notWillingCount}
-              </motion.div>
+              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>Not Selected</h3>
+              <div className="count" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{notWillingCount}</div>
             </motion.div>
           </div>
           
@@ -436,10 +418,18 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
+            style={{ display: 'flex', gap: '2rem' }}
           >
-            <div className="summary-list">
-              <h3>Selected Students</h3>
-              <div className="name-list">
+            <div className="summary-list" style={{ flex: 1 }}>
+              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'rgba(16, 185, 129, 0.9)' }}>Selected List</h3>
+              <div className="name-list" style={{ 
+                maxHeight: '200px',
+                overflowY: 'auto',
+                fontSize: '0.85rem',
+                padding: '0.5rem',
+                background: 'rgba(16, 185, 129, 0.05)',
+                borderRadius: '6px'
+              }}>
                 {willingStudents.map((student, index) => (
                   <motion.div 
                     key={student.REGNO}
@@ -448,21 +438,27 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 1.3 + index * 0.05 }}
-                    whileHover={{ 
-                      x: 8,
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(79, 70, 229, 0.3)"
+                    style={{
+                      padding: '0.25rem 0.5rem',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)'
                     }}
                   >
-                    {student.NAME} ({student["ROLL NO"]})
+                    {student["ROLL NO"]} - {student.NAME}
                   </motion.div>
                 ))}
               </div>
             </div>
             
-            <div className="summary-list">
-              <h3>Not Selected Students</h3>
-              <div className="name-list">
+            <div className="summary-list" style={{ flex: 1 }}>
+              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'rgba(239, 68, 68, 0.9)' }}>Not Selected List</h3>
+              <div className="name-list" style={{ 
+                maxHeight: '200px',
+                overflowY: 'auto',
+                fontSize: '0.85rem',
+                padding: '0.5rem',
+                background: 'rgba(239, 68, 68, 0.05)',
+                borderRadius: '6px'
+              }}>
                 {notWillingStudents.map((student, index) => (
                   <motion.div 
                     key={student.REGNO}
@@ -471,13 +467,12 @@ ${notWillingStudents.map(student => `${student["SI. NO"]}. ${student.NAME} (${st
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 1.3 + index * 0.05 }}
-                    whileHover={{ 
-                      x: 8,
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(239, 68, 68, 0.3)"
+                    style={{
+                      padding: '0.25rem 0.5rem',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)'
                     }}
                   >
-                    {student.NAME} ({student["ROLL NO"]})
+                    {student["ROLL NO"]} - {student.NAME}
                   </motion.div>
                 ))}
               </div>
